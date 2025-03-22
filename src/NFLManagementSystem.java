@@ -16,7 +16,7 @@ public class NFLManagementSystem {
         int lcv = 0;
 
         do {
-            NFLManagementSystem.displayMenu();
+            NFLManagementSystem.showMenu();
 
             try {
                 lcv = sc.nextInt();
@@ -38,7 +38,7 @@ public class NFLManagementSystem {
                 case 3 -> gameManager.displayGames();
                 case 4 -> teamManager.addTeam(sc);
                 case 5 -> playerManager.addPlayer(sc, teamManager);
-//                case 6 ->
+                case 6 -> teamManager.findTeam(sc);
                 case 7 -> {
                     System.out.println("-------------------------------------------------------------------");
                     System.out.println("\n*************  Exiting program by Joshua MacPherson  **************\n");
@@ -51,7 +51,7 @@ public class NFLManagementSystem {
         sc.close();
     }
 
-    public static void displayMenu() {
+    public static void showMenu() {
         System.out.println("-------------------------------------------------------------------");
         System.out.println("                  NFL Operations Management System                 ");
         System.out.println("-------------------------------------------------------------------");

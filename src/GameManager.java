@@ -20,7 +20,6 @@ public class GameManager{
     public void loadGamesFromFile(String gameFileName) {
         try (BufferedReader br = new BufferedReader(new FileReader(gameFileName))) {
             String line;
-            br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] gameData = line.split(",");
                 Game game = new Game(gameData[0], gameData[1], gameData[2], gameData[3], gameData[4]);

@@ -26,8 +26,16 @@ public class Team implements Serializable {
         return players;
     }
 
+    public String getCity() {
+        return city;
+    }
+
     public String getTeamName() {
         return teamName;
+    }
+
+    public Coach getCoach() {
+        return coach;
     }
 
     @Override

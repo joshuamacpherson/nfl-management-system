@@ -38,10 +38,9 @@ public class PlayerManager {
     public void loadPlayersFromFile(String playerFileName, TeamManager teamManager) {
         try (BufferedReader br = new BufferedReader(new FileReader(playerFileName))) {
             String line;
-            br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] playerData = line.split(",");
-                Player player = new Player(playerData[0], playerData[1], Integer.parseInt(playerData[2]), playerData[3], playerData[4]);
+                Player player = new Player(playerData[0].trim(), playerData[1].trim(), Integer.parseInt(playerData[2].trim()), playerData[3].trim(), playerData[4].trim());
                 players.add(player);
                 Team team = teamManager.getTeamByName(playerData[3]);
                 if (team != null) {
