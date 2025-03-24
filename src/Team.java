@@ -10,12 +10,15 @@ public class Team implements Serializable {
     private String city;
     private ArrayList<Player> players = new ArrayList<>();
     private Coach coach;
-    PlayerManager playerManager = new PlayerManager();
 
     public Team(String teamName, String city, Coach coach) {
         this.teamName = teamName;
         this.city = city;
         this.coach = coach;
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
     }
 
     public void addPlayer(Player player) {

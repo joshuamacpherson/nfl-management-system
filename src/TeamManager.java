@@ -8,8 +8,6 @@ public class TeamManager {
 
     private ArrayList<Team> teams = new ArrayList<>();
     private ArrayList<Coach> coaches = new ArrayList<>();
-    private String teamFileName;
-    private String coachFileName;
 
     public void findTeam(Scanner sc) {
         System.out.println("Enter team name to find: ");
