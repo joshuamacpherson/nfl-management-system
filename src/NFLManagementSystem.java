@@ -12,9 +12,7 @@ public class NFLManagementSystem {
         gameManager.loadGamesFromFile("games.csv");
         Scanner sc = new Scanner(System.in);
 
-
         int lcv = 0;
-
         do {
             NFLManagementSystem.showMenu();
 
@@ -44,11 +42,12 @@ public class NFLManagementSystem {
                     System.out.println("\n*************  Exiting program by Joshua MacPherson  **************\n");
                     System.out.println("-------------------------------------------------------------------");
                 }
-
             }
-
         } while (lcv != 7);
         sc.close();
+        System.out.println("The 'Serializable' interface allows an object to be serialized and deserialized, " +
+                "\nthe role of the UID number would be to only allow compatible versions of the object to be \nserialized and deserialized, " +
+                "and whoever is managing them should increment the \nUID every time a new version is created that is not compatible with an older version.");
     }
 
     public static void showMenu() {

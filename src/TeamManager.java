@@ -13,28 +13,28 @@ public class TeamManager {
 
     public void findTeam(Scanner sc) {
         System.out.println("Enter team name to find: ");
-        String teamName = sc.nextLine();
+        String teamName = sc.nextLine().trim();
+
         for (Team team : teams) {
-            if (team.getTeamName().equals(teamName)) {
+            if (team.getTeamName().equalsIgnoreCase(teamName)) {
                 System.out.println("-------------------------------------------------------------------");
-                System.out.println("Found team: "+ team.getTeamName() + "\nCity: " + team.getCity() +"\nCoach: "
+                System.out.println("Found team: " + team.getTeamName() + "\nCity: " + team.getCity() + "\nCoach: "
                         + team.getCoach().getName() + " (" + team.getCoach().getYearsOfExperience() + " years of experience)");
-            } else {
-                String err = "Couldn't find team: " + teamName;
                 return;
             }
         }
+        System.out.println("Team not found");
     }
 
     public void addTeam(Scanner sc) {
         System.out.println("Enter team name: ");
-        String teamName = sc.nextLine();
+        String teamName = sc.nextLine().trim();
         System.out.println("Enter city: ");
-        String city = sc.nextLine();
+        String city = sc.nextLine().trim();
         System.out.println("Enter coach ID: ");
-        String coachID = sc.nextLine();
+        String coachID = sc.nextLine().trim();
         System.out.println("Enter coach name: ");
-        String coachName = sc.nextLine();
+        String coachName = sc.nextLine().trim();
         System.out.println("Enter coach's years of experience: ");
         int coachYears = sc.nextInt();
         Coach coach = new Coach(coachID, coachName, teamName, coachYears);

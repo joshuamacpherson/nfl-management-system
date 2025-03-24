@@ -22,10 +22,6 @@ public class Team implements Serializable {
         players.add(player);
     }
 
-    public ArrayList<Player> getPlayers() {
-        return players;
-    }
-
     public String getCity() {
         return city;
     }

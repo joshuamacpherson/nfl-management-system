@@ -1,6 +1,10 @@
+import java.io.Serial;
 import java.io.Serializable;
 
 public class Player implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
     private String playerID;
     private String name;
     private int age;

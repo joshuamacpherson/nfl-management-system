@@ -9,29 +9,29 @@ public class PlayerManager {
     ArrayList<Player> players = new ArrayList<>();
 
     public void addPlayer(Scanner sc, TeamManager teamManager) {
-            boolean added = false;
             System.out.print("Enter player ID: ");
-            String playerID = sc.nextLine();
+            String playerID = sc.nextLine().trim();
+
             System.out.print("Enter player name: ");
-            String playerName = sc.nextLine();
+            String playerName = sc.nextLine().trim();
+
             int playerAge = PlayerManager.askForInt(sc, "Enter player age: ");
-            System.out.print("Enter team name: ");
-            String teamName = sc.nextLine();
-            while (!added) {
-                Team team = teamManager.getTeamByName(teamName);
-                if (!(teamManager.getTeams().contains(team))) {
+
+            Team team = null;
+            while (team == null) {
+                System.out.print("Enter team name: ");
+                String teamName = sc.nextLine().trim();
+                team = teamManager.getTeamByName(teamName);
+                if (team == null) {
                     System.out.println("Team does not exist");
-                    sc.nextLine();
-                } else {
-                    added = true;
                 }
             }
 
             System.out.print("Enter player position: ");
-            String playerPosition = sc.nextLine();
-            Player player = new Player(playerID, playerName, playerAge, teamName, playerPosition);
+            String playerPosition = sc.nextLine().trim();
+
+            Player player = new Player(playerID, playerName, playerAge, team.getTeamName(), playerPosition);
             players.add(player);
-            Team team = teamManager.getTeamByName(teamName);
             team.addPlayer(player);
     }
 
