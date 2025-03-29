@@ -21,7 +21,7 @@ public class PlayerManager {
             while (team == null) {
                 System.out.print("Enter team name: ");
                 String teamName = sc.nextLine().trim();
-                team = teamManager.getTeamByName(teamName);
+                team = teamManager.findTeam(teamName);
                 if (team == null) {
                     System.out.println("Team does not exist");
                 }
@@ -42,7 +42,7 @@ public class PlayerManager {
                 String[] playerData = line.split(",");
                 Player player = new Player(playerData[0].trim(), playerData[1].trim(), Integer.parseInt(playerData[2].trim()), playerData[3].trim(), playerData[4].trim());
                 players.add(player);
-                Team team = teamManager.getTeamByName(playerData[3]);
+                Team team = teamManager.findTeam(playerData[3]);
                 if (team != null) {
                     team.addPlayer(player);
                 } else {

@@ -19,24 +19,8 @@ public class Player implements Serializable {
         this.position = position;
     }
 
-    public String getPlayerID() {
-        return playerID;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public String getTeamName() {
-        return teamName;
-    }
-
-    public String getPosition() {
-        return position;
     }
 
     @Override

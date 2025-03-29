@@ -15,7 +15,6 @@ public class NFLManagementSystem {
         int lcv = 0;
         do {
             NFLManagementSystem.showMenu();
-
             try {
                 lcv = sc.nextInt();
                 sc.nextLine();
@@ -36,7 +35,18 @@ public class NFLManagementSystem {
                 case 3 -> gameManager.displayGames();
                 case 4 -> teamManager.addTeam(sc);
                 case 5 -> playerManager.addPlayer(sc, teamManager);
-                case 6 -> teamManager.findTeam(sc);
+                case 6 -> {
+                    System.out.print("Enter team name: ");
+                    String teamName = sc.nextLine().trim();
+                    Team team = teamManager.findTeam(teamName);
+                    if (team != null) {
+                        System.out.println("-------------------------------------------------------------------");
+                        System.out.println("Found team: " + team.getTeamName() + "\nCity: " + team.getCity() + "\nCoach: "
+                        + team.getCoach().getName() + " (" + team.getCoach().getYearsOfExperience() + " years of experience)");
+                    } else {
+                        System.out.println("Team not found.");
+                    }
+                }
                 case 7 -> {
                     System.out.println("-------------------------------------------------------------------");
                     System.out.println("\n*************  Exiting program by Joshua MacPherson  **************\n");
@@ -50,7 +60,7 @@ public class NFLManagementSystem {
                 "and whoever is managing them should increment the \nUID every time a new version is created that is not compatible with an older version.");
     }
 
-    public static void showMenu() {
+    private static void showMenu() {
         System.out.println("-------------------------------------------------------------------");
         System.out.println("                  NFL Operations Management System                 ");
         System.out.println("-------------------------------------------------------------------");

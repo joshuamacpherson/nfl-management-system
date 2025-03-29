@@ -9,21 +9,6 @@ public class TeamManager {
     private ArrayList<Team> teams = new ArrayList<>();
     private ArrayList<Coach> coaches = new ArrayList<>();
 
-    public void findTeam(Scanner sc) {
-        System.out.println("Enter team name to find: ");
-        String teamName = sc.nextLine().trim();
-
-        for (Team team : teams) {
-            if (team.getTeamName().equalsIgnoreCase(teamName)) {
-                System.out.println("-------------------------------------------------------------------");
-                System.out.println("Found team: " + team.getTeamName() + "\nCity: " + team.getCity() + "\nCoach: "
-                        + team.getCoach().getName() + " (" + team.getCoach().getYearsOfExperience() + " years of experience)");
-                return;
-            }
-        }
-        System.out.println("Team not found");
-    }
-
     public void addTeam(Scanner sc) {
         System.out.println("Enter team name: ");
         String teamName = sc.nextLine().trim();
@@ -79,11 +64,7 @@ public class TeamManager {
         }
     }
 
-    public ArrayList<Team> getTeams() {
-        return teams;
-    }
-
-    public Team getTeamByName(String teamName) {
+    public Team findTeam(String teamName) {
         for (Team team : teams) {
             if (team.getTeamName().equals(teamName)) {
                 return team;
@@ -91,5 +72,4 @@ public class TeamManager {
         }
         return null;
     }
-
 }

@@ -17,10 +17,6 @@ public class Team implements Serializable {
         this.coach = coach;
     }
 
-    public ArrayList<Player> getPlayers() {
-        return players;
-    }
-
     public void addPlayer(Player player) {
         players.add(player);
     }
