@@ -147,15 +147,18 @@ public class NFLManagementSystem {
                     System.out.println("-------------------------------------------------------------------");
                     break;
 
-                default:
+                default: // catching any other input
                     System.out.println("-------------------------------------------------------------------");
                     System.out.println("\n************************  INVALID INPUT  **************************\n");
                     break;
             }
         } while (!userChoice.equals("7"));
 
-        sc.close();
+        sc.close(); // close scanner
 
+        /*
+        Explanation of the serialVersionUID number, and its purpose
+         */
         System.out.println("The 'Serializable' interface allows an object to be serialized and deserialized, " +
                 "\nthe role of the UID number would be to only allow compatible versions of the object to be \nserialized and deserialized, " +
                 "and whoever is managing them should increment the \nUID every time a new version is created that is not compatible with an older version.");
