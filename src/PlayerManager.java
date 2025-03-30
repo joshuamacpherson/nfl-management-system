@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class PlayerManager {
@@ -14,7 +15,18 @@ public class PlayerManager {
             System.out.print("Enter player name: ");
             String playerName = sc.nextLine().trim();
 
-            int playerAge = PlayerManager.askForInt(sc, "Enter player age: ");
+            // handling errors for player age if user enters a string instead of a number
+            int playerAge;
+            while (true) {
+                System.out.print("Enter player age: ");
+                try {
+                    playerAge = sc.nextInt();
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Please enter a number.");
+                    sc.nextLine();
+                }
+            }
 
             Team team = null;
             while (team == null) {
@@ -59,20 +71,6 @@ public class PlayerManager {
         System.out.println("-------------------------------------------------------------------");
         for (Player player : players) {
             System.out.println(player);
-        }
-    }
-
-    private static int askForInt(Scanner sc, String message) {
-        while (true) {
-            System.out.print(message);
-            if (sc.hasNextInt()) {
-                int value = sc.nextInt();
-                sc.nextLine();
-                return value;
-            } else {
-                System.out.println("Invalid input. Please enter a valid integer.");
-                sc.nextLine();
-            }
         }
     }
 }

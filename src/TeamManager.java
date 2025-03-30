@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TeamManager {
@@ -10,16 +11,27 @@ public class TeamManager {
     private ArrayList<Coach> coaches = new ArrayList<>();
 
     public void addTeam(Scanner sc) {
-        System.out.println("Enter team name: ");
+        System.out.print("Enter team name: ");
         String teamName = sc.nextLine().trim();
-        System.out.println("Enter city: ");
+        System.out.print("Enter city: ");
         String city = sc.nextLine().trim();
-        System.out.println("Enter coach ID: ");
+        System.out.print("Enter coach ID: ");
         String coachID = sc.nextLine().trim();
-        System.out.println("Enter coach name: ");
+        System.out.print("Enter coach name: ");
         String coachName = sc.nextLine().trim();
-        System.out.println("Enter coach's years of experience: ");
-        int coachYears = sc.nextInt();
+
+        // handling errors for player age if user enters a string instead of a number
+        int coachYears;
+        while (true) {
+            System.out.print("Enter coach's years of experience: ");
+            try {
+                coachYears = sc.nextInt();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Please enter a number.");
+                sc.nextLine();
+            }
+        }
         Coach coach = new Coach(coachID, coachName, teamName, coachYears);
         coaches.add(coach);
         teams.add(new Team(teamName, city, coach));
@@ -44,7 +56,7 @@ public class TeamManager {
                 coaches.add(coach);
             }
         } catch (IOException e) {
-            System.out.println("File not found");
+            System.out.println("File not found.");
         }
 
         try (BufferedReader br = new BufferedReader(new FileReader(teamFileName))) {
@@ -60,7 +72,7 @@ public class TeamManager {
                 }
             }
         } catch (IOException e) {
-            System.out.println("File not found");
+            System.out.println("File not found.");
         }
     }
 

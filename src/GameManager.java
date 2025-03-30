@@ -25,7 +25,7 @@ public class GameManager{
                 games.add(game);
             }
         } catch (IOException e) {
-            System.out.println("File not found");
+            System.out.println("File not found.");
         }
     }
 }

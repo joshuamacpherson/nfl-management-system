@@ -3,12 +3,16 @@ import java.util.Scanner;
 
 public class NFLManagementSystem {
     public static void main(String[] args) {
+        /*
+        Loading all the data from the CSV files into memory
+         */
         TeamManager teamManager = new TeamManager();
         teamManager.loadTeamsFromFile("couches.csv", "teams.csv");
         PlayerManager playerManager = new PlayerManager();
         playerManager.loadPlayersFromFile("players.csv", teamManager);
         GameManager gameManager = new GameManager();
         gameManager.loadGamesFromFile("games.csv");
+
         Scanner sc = new Scanner(System.in);
 
         int userChoice = 0;
