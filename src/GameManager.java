@@ -14,9 +14,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class GameManager{
-    ArrayList<Game> games = new ArrayList<>();
+    ArrayList<Game> games = new ArrayList<>(); // stores all game objects
 
-    public void displayGames() {
+    public void displayGames() { // displays all games in the games list
         System.out.println("-------------------------------------------------------------------");
         System.out.printf("%-9s %-9s %-12s %-15s %-6s%n", "Team 1", "Team 2", "Date", "Location", "Score");
         System.out.println("-------------------------------------------------------------------");
@@ -25,6 +25,10 @@ public class GameManager{
         }
     }
 
+    /**
+     * loads data from the file, and creates the games
+     * @param gameFileName the name of the file containing game data
+     */
     public void loadGamesFromFile(String gameFileName) { // loads games from given file
         try (BufferedReader br = new BufferedReader(new FileReader(gameFileName))) {
             String line;

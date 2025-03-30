@@ -17,7 +17,7 @@ public class Team implements Serializable {
     private static final long serialVersionUID = 1L;
     private String teamName;
     private String city;
-    private ArrayList<Player> players = new ArrayList<>();
+    private ArrayList<Player> players = new ArrayList<>(); // stores all player objects that belong to the team
     private Coach coach;
 
     public Team(String teamName, String city, Coach coach) {
@@ -26,6 +26,10 @@ public class Team implements Serializable {
         this.coach = coach;
     }
 
+    /**
+     * adds a player to the players list
+     * @param player the player object to be added
+     */
     public void addPlayer(Player player) {
         players.add(player);
     }

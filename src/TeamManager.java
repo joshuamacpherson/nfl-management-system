@@ -14,8 +14,8 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class TeamManager {
-    private ArrayList<Team> teams = new ArrayList<>();
-    private ArrayList<Coach> coaches = new ArrayList<>();
+    private ArrayList<Team> teams = new ArrayList<>(); // stores all team objects
+    private ArrayList<Coach> coaches = new ArrayList<>(); // stores all coach objects
 
     public void addTeam(String coachID, String city, String coachName, String teamName, int coachYears) {
         Coach coach = new Coach(coachID, coachName, teamName, coachYears);
@@ -32,7 +32,12 @@ public class TeamManager {
         }
     }
 
-    public void loadTeamsFromFile(String coachFileName, String teamFileName) { // loads teams and coaches from files given
+    /**
+     * loads data from the files, and creates the teams and coaches
+     @param coachFileName the name of the file containing coach data
+     @param teamFileName the name of the file containing team data
+     */
+    public void loadTeamsFromFile(String coachFileName, String teamFileName) {
         try (BufferedReader br = new BufferedReader(new FileReader(coachFileName))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -61,7 +66,12 @@ public class TeamManager {
         }
     }
 
-    public Team findTeam(String teamName) { // searches for a team by name
+    /**
+     * finds a team by its name
+     @param teamName the name of the team to find
+     @return the team object if found, null otherwise
+     */
+    public Team findTeam(String teamName) {
         for (Team team : teams) { // iterates through the teams
             if (team.getTeamName().equals(teamName)) { // checks if the team name matches
                 return team; // if it does, return the team

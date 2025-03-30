@@ -14,15 +14,30 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class PlayerManager {
-    ArrayList<Player> players = new ArrayList<>();
+    ArrayList<Player> players = new ArrayList<>(); // stores all player objects
 
+    /**
+     * adds a player to the players list and the correct team
+     * @param playerID player's ID
+     * @param name player's name
+     * @param age player's age
+     * @param teamName team name the player belongs to
+     * @param position player's position for the team
+     * @param teamManager the team manager object to find the team and assign the player correctly
+     */
     public void addPlayer(String playerID, String name, int age, String teamName, String position, TeamManager teamManager) {
+        // adds player to the players list, and the correct team
             Player player = new Player(playerID, name, age, teamName, position);
             players.add(player);
-            Team team = teamManager.findTeam(teamName);
-            team.addPlayer(player);
+            Team team = teamManager.findTeam(teamName); // instantiates team object
+            team.addPlayer(player); // adds player to that team
     }
 
+    /**
+     * loads players from a file and adds them to the players list and the correct team
+     * @param playerFileName the name of the file containing player data
+     * @param teamManager the team manager object to find the team and assign the player correctly
+     */
     public void loadPlayersFromFile(String playerFileName, TeamManager teamManager) {
         try (BufferedReader br = new BufferedReader(new FileReader(playerFileName))) {
             String line;
