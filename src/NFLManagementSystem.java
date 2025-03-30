@@ -1,3 +1,14 @@
+/**
+ * Student Name: Joshua MacPherson
+ * Student ID: 041166405
+ * Course: CST8132 - Object-Oriented Programming
+ * Professor: James Mwangi
+ * Assignment: OOP Assignment 2
+ * Due Date: 2025-3-30
+ * Program Description: This program is an NFL management system that allows the user to manage teams, players, and games.
+ * It features an interactive menu system that allows the user to add teams and players, display teams, players and games,
+ * and search for specific teams.
+ */
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -22,7 +33,6 @@ public class NFLManagementSystem {
         do {
             NFLManagementSystem.showMenu();
             userChoice = sc.nextLine().trim();
-
 
             switch (userChoice) {
                 case "1": // displays all teams
@@ -151,7 +161,7 @@ public class NFLManagementSystem {
                 "and whoever is managing them should increment the \nUID every time a new version is created that is not compatible with an older version.");
     }
 
-    private static void showMenu() {
+    private static void showMenu() { // method to display the menu
         System.out.println("-------------------------------------------------------------------");
         System.out.println("                  NFL Operations Management System                 ");
         System.out.println("-------------------------------------------------------------------");

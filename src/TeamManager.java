@@ -1,33 +1,38 @@
+/**
+ * Student Name: Joshua MacPherson
+ * Student ID: 041166405
+ * Course: CST8132 - Object-Oriented Programming
+ * Professor: James Mwangi
+ * Assignment: OOP Assignment 2
+ * Due Date: 2025-3-30
+ * Class Description: This class manages the teams in the NFL management system. It stores the coaches and the teams,
+ * and allows the adding and searching of teams. It also loads the teams from a file.
+ */
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class TeamManager {
-
     private ArrayList<Team> teams = new ArrayList<>();
     private ArrayList<Coach> coaches = new ArrayList<>();
 
     public void addTeam(String coachID, String city, String coachName, String teamName, int coachYears) {
-
         Coach coach = new Coach(coachID, coachName, teamName, coachYears);
         coaches.add(coach);
         teams.add(new Team(teamName, city, coach));
     }
 
-    public void displayTeams() {
+    public void displayTeams() { // displays all teams
         System.out.println("-------------------------------------------------------------------");
         System.out.printf("%-9s %-15s %-30s %7s%n", "Team", "City", "Coach", "Players");
         System.out.println("-------------------------------------------------------------------");
-        for (Team team : teams) {
+        for (Team team : teams) { // prints each team's toString method
             System.out.println(team);
         }
     }
 
-    public void loadTeamsFromFile(String coachFileName, String teamFileName) {
-
+    public void loadTeamsFromFile(String coachFileName, String teamFileName) { // loads teams and coaches from files given
         try (BufferedReader br = new BufferedReader(new FileReader(coachFileName))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -56,12 +61,12 @@ public class TeamManager {
         }
     }
 
-    public Team findTeam(String teamName) {
-        for (Team team : teams) {
-            if (team.getTeamName().equals(teamName)) {
-                return team;
+    public Team findTeam(String teamName) { // searches for a team by name
+        for (Team team : teams) { // iterates through the teams
+            if (team.getTeamName().equals(teamName)) { // checks if the team name matches
+                return team; // if it does, return the team
             }
         }
-        return null;
+        return null; // if no team is found, return null
     }
 }

@@ -1,14 +1,22 @@
+/**
+ * Student Name: Joshua MacPherson
+ * Student ID: 041166405
+ * Course: CST8132 - Object-Oriented Programming
+ * Professor: James Mwangi
+ * Assignment: OOP Assignment 2
+ * Due Date: 2025-3-30
+ * Class Description: This class manages the players in the NFL management system. It allows the adding of players and
+ * displaying of players. It also loads the players from a file.
+ */
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class PlayerManager {
-
     ArrayList<Player> players = new ArrayList<>();
 
     public void addPlayer(String playerID, String name, int age, String teamName, String position, TeamManager teamManager) {
-
             Player player = new Player(playerID, name, age, teamName, position);
             players.add(player);
             Team team = teamManager.findTeam(teamName);

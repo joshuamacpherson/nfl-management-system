@@ -1,10 +1,19 @@
+/**
+ * Student Name: Joshua MacPherson
+ * Student ID: 041166405
+ * Course: CST8132 - Object-Oriented Programming
+ * Professor: James Mwangi
+ * Assignment: OOP Assignment 2
+ * Due Date: 2025-3-30
+ * Class Description: This class manages the games in the NFL management system. It allows the loading of games from a file,
+ * and the display of these games.
+ */
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class GameManager{
-
     ArrayList<Game> games = new ArrayList<>();
 
     public void displayGames() {
@@ -16,7 +25,7 @@ public class GameManager{
         }
     }
 
-    public void loadGamesFromFile(String gameFileName) {
+    public void loadGamesFromFile(String gameFileName) { // loads games from given file
         try (BufferedReader br = new BufferedReader(new FileReader(gameFileName))) {
             String line;
             while ((line = br.readLine()) != null) {
