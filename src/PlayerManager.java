@@ -2,48 +2,16 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class PlayerManager {
 
     ArrayList<Player> players = new ArrayList<>();
 
-    public void addPlayer(Scanner sc, TeamManager teamManager) {
-            System.out.print("Enter player ID: ");
-            String playerID = sc.nextLine().trim();
+    public void addPlayer(String playerID, String name, int age, String teamName, String position, TeamManager teamManager) {
 
-            System.out.print("Enter player name: ");
-            String playerName = sc.nextLine().trim();
-
-            // handling errors for player age if user enters a string instead of a number
-            int playerAge;
-            while (true) {
-                System.out.print("Enter player age: ");
-                try {
-                    playerAge = sc.nextInt();
-                    break;
-                } catch (InputMismatchException e) {
-                    System.out.println("Please enter a number.");
-                    sc.nextLine();
-                }
-            }
-
-            Team team = null;
-            while (team == null) {
-                System.out.print("Enter team name: ");
-                String teamName = sc.nextLine().trim();
-                team = teamManager.findTeam(teamName);
-                if (team == null) {
-                    System.out.println("Team does not exist");
-                }
-            }
-
-            System.out.print("Enter player position: ");
-            String playerPosition = sc.nextLine().trim();
-
-            Player player = new Player(playerID, playerName, playerAge, team.getTeamName(), playerPosition);
+            Player player = new Player(playerID, name, age, teamName, position);
             players.add(player);
+            Team team = teamManager.findTeam(teamName);
             team.addPlayer(player);
     }
 

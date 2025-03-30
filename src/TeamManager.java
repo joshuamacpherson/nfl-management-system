@@ -10,28 +10,8 @@ public class TeamManager {
     private ArrayList<Team> teams = new ArrayList<>();
     private ArrayList<Coach> coaches = new ArrayList<>();
 
-    public void addTeam(Scanner sc) {
-        System.out.print("Enter team name: ");
-        String teamName = sc.nextLine().trim();
-        System.out.print("Enter city: ");
-        String city = sc.nextLine().trim();
-        System.out.print("Enter coach ID: ");
-        String coachID = sc.nextLine().trim();
-        System.out.print("Enter coach name: ");
-        String coachName = sc.nextLine().trim();
+    public void addTeam(String coachID, String city, String coachName, String teamName, int coachYears) {
 
-        // handling errors for player age if user enters a string instead of a number
-        int coachYears;
-        while (true) {
-            System.out.print("Enter coach's years of experience: ");
-            try {
-                coachYears = sc.nextInt();
-                break;
-            } catch (InputMismatchException e) {
-                System.out.println("Please enter a number.");
-                sc.nextLine();
-            }
-        }
         Coach coach = new Coach(coachID, coachName, teamName, coachYears);
         coaches.add(coach);
         teams.add(new Team(teamName, city, coach));
