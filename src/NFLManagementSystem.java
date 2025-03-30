@@ -1,4 +1,3 @@
-// TEST
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -12,30 +11,35 @@ public class NFLManagementSystem {
         gameManager.loadGamesFromFile("games.csv");
         Scanner sc = new Scanner(System.in);
 
-        int lcv = 0;
+        int userChoice = 0;
         do {
             NFLManagementSystem.showMenu();
             try {
-                lcv = sc.nextInt();
+                userChoice = sc.nextInt();
                 sc.nextLine();
-
-                if (lcv < 1 || lcv > 7) {
-                    System.out.println("-------------------------------------------------------------------");
-                    System.out.println("\n************************  INVALID INPUT  **************************\n");
-                }
             } catch (InputMismatchException e) {
                 System.out.println("-------------------------------------------------------------------");
                 System.out.println("\n************************  INVALID INPUT  **************************\n");
                 sc.nextLine();
             }
 
-            switch (lcv) {
-                case 1 -> teamManager.displayTeams();
-                case 2 -> playerManager.displayPlayers();
-                case 3 -> gameManager.displayGames();
-                case 4 -> teamManager.addTeam(sc);
-                case 5 -> playerManager.addPlayer(sc, teamManager);
-                case 6 -> {
+            switch (userChoice) {
+                case 1:
+                    teamManager.displayTeams();
+                    break;
+                case 2:
+                    playerManager.displayPlayers();
+                    break;
+                case 3:
+                    gameManager.displayGames();
+                    break;
+                case 4:
+                    teamManager.addTeam(sc);
+                    break;
+                case 5:
+                    playerManager.addPlayer(sc, teamManager);
+                    break;
+                case 6:
                     System.out.print("Enter team name: ");
                     String teamName = sc.nextLine().trim();
                     Team team = teamManager.findTeam(teamName);
@@ -46,14 +50,18 @@ public class NFLManagementSystem {
                     } else {
                         System.out.println("Team not found.");
                     }
-                }
-                case 7 -> {
+                    break;
+                case 7:
                     System.out.println("-------------------------------------------------------------------");
                     System.out.println("\n*************  Exiting program by Joshua MacPherson  **************\n");
                     System.out.println("-------------------------------------------------------------------");
-                }
+                    break;
+                default:
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("\n************************  INVALID INPUT  **************************\n");
+                    break;
             }
-        } while (lcv != 7);
+        } while (userChoice != 7);
         sc.close();
         System.out.println("The 'Serializable' interface allows an object to be serialized and deserialized, " +
                 "\nthe role of the UID number would be to only allow compatible versions of the object to be \nserialized and deserialized, " +
