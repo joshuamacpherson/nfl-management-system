@@ -6,6 +6,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class PlayerManager {
+
     ArrayList<Player> players = new ArrayList<>();
 
     public void addPlayer(Scanner sc, TeamManager teamManager) {
