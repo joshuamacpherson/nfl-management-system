@@ -1,4 +1,4 @@
-# School project using OOP principles 
+# Football Management System using OOP
 
 Program with a menu that reads CSV files containing team data, player data, coach data and game data and formats them
 
