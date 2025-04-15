@@ -18,7 +18,7 @@ public class NFLManagementSystem {
         Loading all the data from the CSV files into memory
          */
         TeamManager teamManager = new TeamManager();
-        teamManager.loadTeamsFromFile("couches.csv", "teams.csv");
+        teamManager.loadTeamsFromFile("coaches.csv", "teams.csv");
         PlayerManager playerManager = new PlayerManager();
         playerManager.loadPlayersFromFile("players.csv", teamManager);
         GameManager gameManager = new GameManager();
